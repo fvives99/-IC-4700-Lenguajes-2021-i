@@ -45,8 +45,8 @@ void insertar(int dato)
 
 void inOrden(Nodo *raiz){
 		if(raiz != NULL){
-			printf("{%i}", raiz->izquierdo);
-			inOrden(raiz->dato);
+			inOrden(raiz->izquierdo);
+			printf("{%i}",raiz->dato);
 			inOrden(raiz->derecho);
 	}
 }
@@ -64,7 +64,7 @@ int buscar(int valor) {
 			reco = reco->izquierdo;
 		}
 	}
-	printf("Nodo no encontrado");
+	printf("ERROR: Palabra no encontrada");
 	return;
 }
 
@@ -79,11 +79,12 @@ int main() {
     insertar(8);
     insertar(9);
     insertar(10);
+    insertar(11);
 
     printf("Impresion inorden: ");
     inOrden(raiz);
     printf("\n");
 
-	buscar(8);
+	//buscar(12);
 	return 0;
 }
