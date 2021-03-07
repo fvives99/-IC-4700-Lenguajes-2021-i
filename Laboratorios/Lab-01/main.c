@@ -2,16 +2,25 @@
 #include <stdlib.h>
 
 struct nodo{
-	int dato;
+	char dato;
 	struct nodo *izquierdo;
 	struct nodo *derecho;
+	struct palabra * next;
 };
 
+struct palabra{
+    char *nombre;
+    char *significado;
+    struct palabra* next;
+};
+
+
 typedef struct nodo Nodo;
+typedef struct palabra palabra;
 
 Nodo *raiz = NULL;
 
-void insertar(int dato)
+void insertar(char dato)
 {
     Nodo *nuevo;
     nuevo=malloc(sizeof(Nodo));
@@ -46,12 +55,12 @@ void insertar(int dato)
 void inOrden(Nodo *raiz){
 		if(raiz != NULL){
 			inOrden(raiz->izquierdo);
-			printf("{%i}",raiz->dato);
+			//printf("{%i}",raiz->dato);
 			inOrden(raiz->derecho);
 	}
 }
 
-int buscar(int valor) {
+int buscar(nodo *raiz, char *nombre) {
 	Nodo *reco;
 	reco = raiz;
 	while (reco != NULL) {
@@ -68,23 +77,72 @@ int buscar(int valor) {
 	return;
 }
 
-int main() {
-	insertar(1);
-    insertar(2);
-    insertar(3);
-    insertar(4);
-    insertar(5);
-	insertar(6);
-    insertar(7);
-    insertar(8);
-    insertar(9);
-    insertar(10);
-    insertar(11);
 
-    printf("Impresion inorden: ");
-    inOrden(raiz);
-    printf("\n");
+void menu(){
+	printf("1 - Agregar palabra y significado.\n");
+	printf("2 - Buscar significado de palabra.\n");
+	printf("3 - Imprimir todo el diccionario.\n");
+	printf("4 - Salir.\n");
+}
 
-	//buscar(12);
+int main(){
+
+	char *nombre;
+	char *significado;
+	char input1[100];
+	char input2[250];
+	int opcion = 0;
+
+
+	do{
+		memset(input1, 0, sizeof(input1));
+		memset(input1, 0, sizeof(input2));
+
+		menu();
+		printf("Ingrese una opcion valida: \n");
+		scanf("%d",&opcion);
+		getchar();
+		switch(opcion)
+		{
+		case 1:
+			printf("\nPalabra a guardar: ");
+			fgets(input1, 100, stdin);
+			nombre = strdup(input1);
+
+			printf("Significado de la palabra: ");
+			fgets(input2, 250, stdin);
+			significado = strdup(input2);
+
+			printf("\n");
+			if(raiz == NULL)
+				raiz = insertar(raiz, (char)nombre[0]);
+			else
+				insertar(raiz, (char)nombre[0]);
+
+			palabra * nueva = crear_palabra(nombre, significado);
+			nodo_ab * hoja = buscar_nodo(raiz,(char)nombre[0]);
+			insertar_palabra(nueva, hoja);
+
+			break;
+
+		case 2:
+			printf("Palabra a buscar: ");
+			fgets(input1, 100, stdin);
+			nombre = strdup(input1);
+
+			buscar(raiz, nombre);
+
+			break;
+
+		case 3:
+			inOrden(raiz);
+			break;
+
+		case 4:
+			break;
+		}
+	} while(opcion != 4);
+
+
 	return 0;
 }
