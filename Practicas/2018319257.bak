@@ -1,0 +1,17 @@
+(define pack
+  (lambda (lista)
+    (pack-aux lista '() '())))
+
+;;
+(define pack-aux
+ (lambda (lista resp temp)
+    (cond ((null? lista) (append resp (list temp)))
+          ((null? temp) (pack-aux (cdr lista) resp (append '() (list (car lista)))))
+         ((equal? (list (car lista)) (last temp)) (pack-aux (cdr lista) resp (append temp (list (car lista)))))
+          (else (pack-aux lista (append resp (list temp)) '())))))
+
+(define my-last
+  (lambda (lista)
+    (cond ((null? lista) '())
+          ((null? (cdr lista)) (list (car lista)))
+          (else (my-last (cdr lista))))))
