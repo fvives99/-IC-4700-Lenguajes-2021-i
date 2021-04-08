@@ -1,0 +1,87 @@
+#lang racket
+(require racket/trace)
+
+;; Funciones descritas en el enunciado:
+
+; nodo compuesto por tres elementos: letra, rama-izquierda (hizq) y rama-derecha (hde)
+(struct nodo (letra hizq hder))
+
+
+; (crear árbol)
+(define (crear-arbol)
+  (nodo null null null) )
+
+
+; Funcióon: (raíz arbol)
+(define (raiz arbol)
+  (nodo-letra arbol))
+
+
+
+; Función: (rama-izquierda arbol)
+(define (rama-izquierda arbol)
+  (nodo-hizq arbol))
+
+
+
+; Función: (rama-derecha arbol)
+(define (rama-derecha arbol)
+  (nodo-hder arbol))
+
+
+
+; (buscar letra arbol)
+(define (buscar letra arbol)
+  (if (null? arbol)
+      #f
+      (let ([x (raiz arbol)])
+        (cond
+          [(= letra x) #t]
+          [(< letra x) (buscar (rama-izquierda arbol) letra)]
+          [(> letra x) (buscar (rama-derecha arbol) letra)]))))
+
+
+; Funcion (insertar letra arbol)
+(define (insertar letra arbol)
+  (if (buscar letra arbol)
+      #f
+     (insertar-recursiva letra arbol)))
+
+; Funcion recursiva para insertar
+(define (insertar-recursiva letra arbol)
+  (cond
+    ((empty? arbol) (nuevo letra))           ; Si la rama esta vacia, crea arbol
+    ((equal? letra (raiz arbol)) arbol)      ; Si las letras son iguales, devuelve el arbol (no deberia pasar porque se llama a buscar)
+    ((< letra (raiz arbol)) (if (empty? (rama-izquierda arbol))                         ; Si la rama es nula
+                                (set-nodo-hizq! arbol (nuevo letra))                    ; Se crea un nodo a la izquierda con la letra
+                                (insertar-recursiva (rama-izquierda arbol) letra)))     ; Sino es vacia, hace llamada recursiva 
+    ((> letra (raiz arbol)) (if (empty? (rama-derecha arbol))                           ; Si la rama es nula
+                                (set-nodo-hder! arbol (nuevo letra))                    ; Se crea un nodo a la derecha con la letra
+                                (insertar-recursiva (rama-derecha arbol) letra)))))      ; Sino, hace una llamada recursiva
+
+    
+#|
+(define (bst-add tree value)
+  (if (null? tree) (bst-node value null null)
+      (let ([x (bst-node-val tree)])
+        (cond
+          [(= value x) tree]
+          [(< value x) (if (null? (bst-node-left tree))                         ; Si la rama en la que esta es nula (aka ya llego)
+                       (set-bst-node-left! tree (bst-node value null null))     ; Crea un nodo, le asigna la letra y lo demas nulo
+                       (bst-add (bst-node-left tree) value))]                   ; Sino, hace llamada recursiva con hijo izq y valor
+          [(> value x) (if (null? (bst-node-right tree))                        ; Si la rama en la que esta es nula (aka ya llego)
+                       (set-bst-node-right! tree (bst-node value null null))    ; Crea un nodo, le asigna la letra y lo demas nulo
+                       (bst-add (bst-node-right tree) value))])                 ; Sino, hace llamada recursiva con hijo der y valor
+        tree)))
+|#
+
+
+; (imprimir-en-orden árbol)
+
+
+
+;; === Otras funciones auxuliares: ====
+
+; Crea nuevo nodo solo con la letra
+(define (nuevo letra)
+  (nodo letra null null) )
