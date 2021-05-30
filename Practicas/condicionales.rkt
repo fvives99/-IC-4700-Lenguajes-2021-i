@@ -1,12 +1,11 @@
 #lang racket
-
-(define (quiere-cafe? respuesta)
-  (when (eq? respuesta "si") "aqui tiene su cafe"))
+(define(quiere-cafe? respuesta)
+(when(eq? respuesta "si") "Aquí tiene su café"))
 
 (define (es-par-o-impar? n)
-  (if (=(remainder n 2) 0)
-      "par"
-      "impar"))
+(if (=(remainder n 2) 0)
+    "par"
+    "impar"))
 
 (define (cast-romano n)
   (case n
@@ -22,10 +21,7 @@
 
 (define (mensaje-por-nota n)
   (cond
-    [(< 90 n) "excelente"]
-    [(< 80 n) "muy bien"]
-    [(< 70 n) "aprobado"]
-    [else "reprobado"]))
-
-   
-    
+    ((< 90 n) "Excelente")
+    ((< 80 n) "Muy bien")
+    ((< 70 n) "Aprobado")
+    (else "Reprobado")))

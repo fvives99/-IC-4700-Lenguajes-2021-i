@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 int main(){
+//Implementación de matriz
 int rand_num,i,j,filas,columnas;
 int a[10][10];
 printf("Ingrese el número de filas deseado: ");

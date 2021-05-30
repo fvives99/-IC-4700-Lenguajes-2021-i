@@ -1,24 +1,26 @@
 #include <stdio.h>
-//Declaracion de variables
 int main(){
+//Se necesita ingresar dos números enteros
 int num1, num2, total;
 printf("Ingrese el primer número: ");
-//Se registra el primer valor
+//Con %d se toma el valor ingresado y &nombre de variable se hace la asignación
 scanf("%d" ,&num1);
 printf("Ingrese el segundo número: ");
-//Se registra el segundo valor
 scanf("%d" ,&num2);
+/*Tenemos la suma
+Seguidamente la resta
+Luego la multiplicación 
+Y por último la división.
+Los resultados de las operaciones se guarda en la variable llamada total
+*/
 total = num1 + num2;
-//Asigna la suma de ambos valores a la variable total
 printf("- La suma de ambos números es %d \n", total);
 total = num1 - num2;
-//Asigna la resta de ambos valores a la variable total
 printf("- La resta de ambos números es %d \n", total);
 total = num1 * num2;
-//Asigna la multiplicacion de ambos valores a la variable total
 printf("- La multiplicación de ambos números es %d \n", total);
 total = num1 / num2;
-//Asigna la devision de ambos valores a la variable total
 printf("- La división de ambos números es %d \n", total);
+// return 0 es para terminar el programa.
 return 0;
 }

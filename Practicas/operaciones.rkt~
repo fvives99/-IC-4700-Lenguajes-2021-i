@@ -4,14 +4,14 @@
   (+ (get-number) (get-number)))
 
 (define (restar)
-  (+ (get-number) (get-number)))
+  (- (get-number) (get-number)))
 
-(define (multiplicar)
-  (+ (get-number) (get-number)))
+(define (mutiplicar)
+  (* (get-number) (get-number)))
 
 (define (dividir)
-  (+ (get-number) (get-number)))
+  (/ (get-number) (get-number)))
 
 (define (get-number)
-  (display "Ingrese un numero: ")
-  (string->number(read-line (current-input-port) 'any)))
+  (display "Ingrese un número: ")
+  (strig->number(read-line(current-input-port) *any)))

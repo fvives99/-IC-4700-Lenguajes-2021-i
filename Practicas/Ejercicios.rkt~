@@ -1,0 +1,5 @@
+#lang racket
+
+(define (my-but-last Lista)
+  (if (= lenght(Lista) 2)
+  

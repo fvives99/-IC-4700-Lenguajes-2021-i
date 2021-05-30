@@ -1,0 +1,14 @@
+puede_jugar(erick,coc).                                                      
+true.
+
+puede_jugar(sharon,coc).true.
+
+puede_jugar(jose,dota).
+false.
+
+puede_jugar(jose,culebrita).
+true.
+
+puede_jugar(pablo,sims).
+false.
+

@@ -1,0 +1,34 @@
+#1
+puede_prestar(stephanie, sergio, 15000).                                
+
+Resultado = true.
+
+Cumple con las dos condiciones
+
+
+
+#2
+puede_prestar(stephanie, sergio, 1500000).
+
+Resultado = false.
+
+
+Es false debido a que sergio solo puede obtener 100800
+
+
+#3
+puede_prestar(marcela, sergio, 1).
+
+Resultado = false.
+
+
+Es false debido a que marcela tiene un balance < 1 (-120500)
+
+
+#4
+
+puede_prestar(marcela, maria, -130000).
+
+Resultado = false.
+
+Es false debido a que maria tiene un balance < 0 (-500000)
