@@ -1,13 +1,13 @@
 
 
-let Erick = Cuenta(id:1122,balance:500000)
-Erick.setTasaDeInteresAnual(tasaDeInteresAnual:0.045)
+let Fabian = Cuenta(id:1122,balance:500000)
+Fabian.setTasaDeInteresAnual(tasaDeInteresAnual:0.045)
 
-Erick.depositarDinero(depositado: 150000.0)
-Erick.retirarDinero(retirado: 200000)
+Fabian.depositarDinero(depositado: 150000.0)
+Fabian.retirarDinero(retirado: 200000)
 
 print("\n\nDatos de la cuenta\n")
-print("\nBalance:", Erick.getBalance(),"\nInterés mensual:",Erick.calcularInteresMensual(), "\nFecha de creación de la cuenta:",Erick.getFechaDeCreacion())
+print("\nBalance:", Fabian.getBalance(),"\nInterés mensual:",Fabian.calcularInteresMensual(), "\nFecha de creación de la cuenta:",Fabian.getFechaDeCreacion())
 
 let Matilda = Cuenta(id:1234, balance:2750000)
 Matilda.setTasaDeInteresAnual(tasaDeInteresAnual:0.045)
